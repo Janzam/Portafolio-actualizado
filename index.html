@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b1a">
 <title>María Alejandra Zambrano · Portafolio</title>
 <meta name="description" content="Ingeniera de Software · Backend & Full Stack · Milagro, Ecuador">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💫</text></svg>">
@@ -22,8 +23,10 @@
   --text:#1a1440; --muted:#5b5890;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;transition:background .4s,color .4s}
+html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{max-width:100%}
+img{max-width:100%}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;overflow-x:clip;-webkit-tap-highlight-color:transparent;line-height:1.6;transition:background .4s,color .4s}
 a{color:inherit;text-decoration:none}
 code,.mono{font-family:'JetBrains Mono',monospace}
 #bg{position:fixed;inset:0;z-index:-2}
@@ -38,10 +41,13 @@ code,.mono{font-family:'JetBrains Mono',monospace}
 nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;align-items:center;padding:8px;border-radius:999px;background:var(--card);backdrop-filter:blur(16px);border:1px solid var(--border);max-width:calc(100% - 24px)}
 nav a{padding:8px 14px;border-radius:999px;font-size:.9rem;color:var(--muted);transition:.25s;white-space:nowrap}
 nav a:hover,nav a.active{color:var(--text);background:rgba(124,92,255,.25)}
+.nav-links{display:flex;gap:4px}
+.brand,#burger{display:none}
 #theme{border:none;background:var(--grad);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;flex-shrink:0}
+#burger{border:1px solid var(--border);background:var(--card);color:var(--text);width:40px;height:40px;border-radius:12px;cursor:pointer;font-size:1.2rem;flex-shrink:0}
 #progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:60;width:0}
 
-section{max-width:1150px;margin:0 auto;padding:110px 20px 40px}
+section{max-width:1150px;margin:0 auto;padding:110px max(20px,env(safe-area-inset-right)) 40px max(20px,env(safe-area-inset-left));scroll-margin-top:0}
 .tag{display:inline-block;font-family:'JetBrains Mono';font-size:.8rem;color:var(--c1);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
 h2{font-size:clamp(2rem,5vw,3rem);line-height:1.1;margin-bottom:30px}
 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200%;animation:shine 6s linear infinite}
@@ -51,7 +57,7 @@ h2{font-size:clamp(2rem,5vw,3rem);line-height:1.1;margin-bottom:30px}
 .reveal.in{opacity:1;transform:none}
 
 /* HERO */
-#hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:120px}
+#hero{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:120px}
 .wave{display:inline-block;animation:wave 2.2s infinite;transform-origin:70% 70%}
 @keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}}
 .hello{font-size:1.2rem;color:var(--muted)}
@@ -90,7 +96,7 @@ h1{font-size:clamp(2.4rem,6.5vw,4.6rem);line-height:1.02;margin:10px 0 14px;lett
 .term-in input{flex:1;background:none;border:none;outline:none;color:var(--text);font:inherit}
 
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:18px}
 .about-grid .card{padding:24px;transition:.3s}
 .about-grid .card:hover{transform:translateY(-6px);border-color:var(--c4)}
 .about-grid .ico{font-size:1.8rem;margin-bottom:8px}
@@ -108,7 +114,7 @@ h1{font-size:clamp(2.4rem,6.5vw,4.6rem);line-height:1.02;margin:10px 0 14px;lett
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
 .tab{padding:9px 18px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;font-family:inherit;font-size:.92rem;transition:.25s}
 .tab.on{background:var(--grad);color:#fff;border-color:transparent}
-.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(130px,40%),1fr));gap:14px}
 .skill{padding:20px 12px;text-align:center;transition:.35s;cursor:default;position:relative;overflow:hidden}
 .skill i{font-size:2.6rem;display:block;margin-bottom:8px;transition:.35s}
 .skill .em{font-size:2.3rem;display:block;margin-bottom:8px}
@@ -116,7 +122,7 @@ h1{font-size:clamp(2.4rem,6.5vw,4.6rem);line-height:1.02;margin:10px 0 14px;lett
 .skill:hover{transform:translateY(-6px) rotate(-2deg);border-color:var(--c)}
 .skill:hover i{transform:scale(1.2) rotate(8deg)}
 .skill.hide{display:none}
-.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:40px}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:16px;margin-top:40px}
 .cert{padding:22px;display:flex;gap:16px;align-items:center;position:relative;overflow:hidden}
 .cert .badge{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;flex-shrink:0;background:var(--grad)}
 .cert small{color:var(--muted)}
@@ -125,7 +131,7 @@ h1{font-size:clamp(2.4rem,6.5vw,4.6rem);line-height:1.02;margin:10px 0 14px;lett
 
 /* PROJECTS */
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:22px}
 .proj{padding:0;overflow:hidden;transition:transform .15s,opacity .4s,border-color .3s;transform-style:preserve-3d;display:flex;flex-direction:column}
 .proj:hover{border-color:var(--pc)}
 .proj.hide{display:none}
@@ -181,6 +187,7 @@ h1{font-size:clamp(2.4rem,6.5vw,4.6rem);line-height:1.02;margin:10px 0 14px;lett
 .link{padding:16px 20px;display:flex;align-items:center;gap:16px;transition:.3s}
 .link .li{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:1.3rem;flex-shrink:0;color:#fff}
 .link small{color:var(--muted);display:block;font-size:.8rem}
+.link>div:not(.li){min-width:0;overflow-wrap:anywhere}
 .link:hover{transform:translateX(8px);border-color:var(--c4)}
 .copy{margin-left:auto;background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:6px 10px;cursor:pointer;font-family:inherit;font-size:.8rem}
 form{padding:26px;display:flex;flex-direction:column;gap:14px}
@@ -189,17 +196,99 @@ form{padding:26px;display:flex;flex-direction:column;gap:14px}
 .field label{position:absolute;left:16px;top:13px;color:var(--muted);pointer-events:none;transition:.2s}
 .field input:focus,.field textarea:focus{border-color:var(--c4);box-shadow:0 0 0 3px rgba(124,92,255,.2)}
 .field input:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label{top:4px;font-size:.72rem;color:var(--c1)}
-#toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120px);background:var(--grad);color:#fff;padding:12px 22px;border-radius:12px;font-weight:700;transition:.4s;z-index:99}
+#toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,160px);max-width:calc(100% - 32px);text-align:center;background:var(--grad);color:#fff;padding:12px 22px;border-radius:12px;font-weight:700;transition:.4s;z-index:99}
 #toast.show{transform:translate(-50%,0)}
-footer{text-align:center;padding:40px 20px 60px;color:var(--muted);font-size:.9rem}
+footer{text-align:center;padding:40px 20px calc(60px + env(safe-area-inset-bottom));color:var(--muted);font-size:.9rem}
 .confetti{position:fixed;width:10px;height:14px;z-index:100;pointer-events:none;top:-20px}
 
+/* ===== RESPONSIVE ===== */
+/* Pantallas grandes / 4K */
+@media (min-width:1600px){
+  html{font-size:18px}
+  section{max-width:1350px}
+}
+/* Laptops pequeñas / tablets horizontales */
+@media (max-width:1100px){
+  .chip{font-size:.78rem;max-width:150px}
+  .chip-a{left:-18%!important}
+  .chip-b{right:-12%!important}
+  .avatar-wrap{width:min(300px,80vw)}
+  .orbit{inset:-44px}
+}
+/* Tablets: menú hamburguesa y columnas apiladas */
 @media (max-width:900px){
   #hero,.fun-grid,.contact-grid,.featured{grid-template-columns:1fr}
-  .avatar-wrap{order:-1;width:min(260px,70vw)}
+  #hero{text-align:center;gap:50px;padding-top:110px}
+  .hero-txt p{margin-left:auto;margin-right:auto}
+  .btns,.stats{justify-content:center}
+  #hero>div:last-child{order:-1}
+  .avatar-wrap{width:min(260px,62vw)}
+  .orbit{inset:-36px}
+  .orbit i{font-size:1.5rem;padding:7px;border-radius:10px}
   .chip{display:none}
-  nav a{padding:7px 9px;font-size:.78rem}
-  .nav-hide{display:none}
+  .featured .proj-top{min-height:160px}
+
+  nav{top:10px;left:12px;right:12px;transform:none;max-width:none;justify-content:space-between;border-radius:18px;padding:8px 10px;
+      top:max(10px,env(safe-area-inset-top))}
+  .brand{display:block;font-weight:700;font-size:1.05rem;padding:6px 10px!important;color:var(--text)!important;background:none!important}
+  #burger{display:grid;place-items:center}
+  nav .right{display:flex;gap:8px;align-items:center}
+  .nav-links{position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;gap:4px;padding:10px;border-radius:18px;
+      background:var(--bg2);border:1px solid var(--border);box-shadow:0 20px 40px -10px rgba(0,0,0,.5);
+      opacity:0;transform:translateY(-10px);pointer-events:none;transition:.25s}
+  nav.open .nav-links{opacity:1;transform:none;pointer-events:auto}
+  .nav-links a{padding:13px 16px;font-size:1rem;border-radius:12px}
+}
+/* Celulares */
+@media (max-width:600px){
+  section{padding-top:90px;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+  h2{margin-bottom:22px}
+  .stats{gap:18px 26px}
+  .stats>div{min-width:40%}
+  .btns .btn{flex:1 1 auto;justify-content:center}
+  .blob{width:280px;height:280px;filter:blur(80px)}
+  .timeline{padding-left:24px}
+  .tl{padding:18px}
+  .tl::before{left:-23px}
+  .about-grid .card,.cert,.game,.memory,.quote{padding:18px}
+  .proj-body{padding:16px 18px 18px}
+  .proj-top{height:110px}
+  .featured .proj-top{min-height:130px;font-size:4rem}
+  .tabs,.filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:-16px;margin-right:-16px;padding:0 16px 4px;-webkit-overflow-scrolling:touch}
+  .tabs::-webkit-scrollbar,.filters::-webkit-scrollbar{display:none}
+  .tab{flex-shrink:0}
+  #arena{height:300px}
+  .hud{gap:10px;font-size:.82rem}
+  #term-out{height:200px;font-size:.82rem}
+  .term-in input,.field input,.field textarea{font-size:16px} /* evita zoom automático en iPhone */
+  form{padding:20px}
+  .link{padding:14px;gap:12px}
+  .link .li{width:40px;height:40px;font-size:1.1rem}
+  .link:hover{transform:none}
+}
+/* Celulares pequeños (iPhone SE, Galaxy Fold cerrado) */
+@media (max-width:380px){
+  html{font-size:15px}
+  h1{font-size:2.1rem}
+  .stats b{font-size:1.6rem}
+  .skills{grid-template-columns:repeat(2,1fr)}
+  .mem-grid{gap:6px}
+  .mcard .b{font-size:1.4rem}
+  .copy{padding:5px 7px}
+}
+/* Celulares en horizontal */
+@media (max-height:500px) and (orientation:landscape){
+  #hero{min-height:auto;grid-template-columns:1fr auto;text-align:left;padding-top:90px}
+  #hero>div:last-child{order:0}
+  .avatar-wrap{width:200px}
+  .hero-txt p{margin-left:0}
+  .btns,.stats{justify-content:flex-start}
+  .nav-links{max-height:70vh;overflow-y:auto}
+}
+/* Pantallas táctiles: sin efectos de mouse */
+@media (hover:none){
+  #glow{display:none}
+  .proj:hover .proj-top span{transform:none}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -210,14 +299,20 @@ footer{text-align:center;padding:40px 20px 60px;color:var(--muted);font-size:.9r
 <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
 <div id="glow"></div>
 
-<nav>
-  <a href="#hero" class="active">Inicio</a>
-  <a href="#about">Sobre mí</a>
-  <a href="#skills" class="nav-hide">Stack</a>
-  <a href="#projects">Proyectos</a>
-  <a href="#fun">Juegos</a>
-  <a href="#contact">Contacto</a>
-  <button id="theme" title="Cambiar tema" aria-label="Cambiar tema">🌙</button>
+<nav id="nav">
+  <a href="#hero" class="brand"><span class="grad">MZ</span> 💫</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#hero" class="active">Inicio</a>
+    <a href="#about">Sobre mí</a>
+    <a href="#skills">Stack</a>
+    <a href="#projects">Proyectos</a>
+    <a href="#fun">Juegos</a>
+    <a href="#contact">Contacto</a>
+  </div>
+  <div class="right" style="display:flex;gap:8px;align-items:center">
+    <button id="theme" title="Cambiar tema" aria-label="Cambiar tema">🌙</button>
+    <button id="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -252,8 +347,8 @@ footer{text-align:center;padding:40px 20px 60px;color:var(--muted);font-size:.9r
         <img src="foto.jpg" alt="Foto de perfil de María Alejandra Zambrano"
              onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://avatars.githubusercontent.com/u/155690357?v=4'}else this.replaceWith(Object.assign(document.createElement('div'),{textContent:'MZ',style:'display:grid;place-items:center;height:100%;font-size:5rem;font-weight:700'}))">
       </div>
-      <div class="chip" style="top:6%;left:-28%">☁️ AWS Certified</div>
-      <div class="chip" style="bottom:8%;right:-26%;animation-delay:1s">🤖 IA + Claude</div>
+      <div class="chip chip-a" style="top:6%;left:-28%">☁️ AWS Certified</div>
+      <div class="chip chip-b" style="bottom:8%;right:-26%;animation-delay:1s">🤖 IA + Claude</div>
       <div class="chip" style="bottom:-4%;left:-14%;animation-delay:2s">📍 Milagro, EC</div>
     </div>
   </div>
@@ -390,7 +485,7 @@ footer{text-align:center;padding:40px 20px 60px;color:var(--muted);font-size:.9r
   </div>
 </section>
 
-<footer>Hecho con 💜, mucho ☕ y código por <b class="grad">María Alejandra Zambrano</b> · © <span id="yr"></span><br><small class="mono">psst… prueba el código Konami ↑↑↓↓←→←→BA</small></footer>
+<footer>Hecho con 💜, mucho ☕ y código por <b class="grad">María Alejandra Zambrano</b> · © <span id="yr"></span><br><small class="mono">psst… 🎮 hay un secreto: teclea ↑↑↓↓←→←→BA o toca mi foto 5 veces</small></footer>
 <div id="toast"></div>
 
 <script>
@@ -420,7 +515,15 @@ $$('.reveal,[data-count]').forEach(el=>io.observe(el));
 /* NAV ACTIVE + PROGRESS */
 addEventListener('scroll',()=>{const h=document.documentElement;$('#progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
   let cur='hero';$$('section[id]').forEach(s=>{if(scrollY>=s.offsetTop-200)cur=s.id});
-  $$('nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))},{passive:true});
+  $$('#navLinks a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))},{passive:true});
+
+/* MENÚ MÓVIL */
+const nav=$('#nav'),burger=$('#burger');
+const setMenu=o=>{nav.classList.toggle('open',o);burger.textContent=o?'✕':'☰';burger.setAttribute('aria-expanded',o)};
+burger.onclick=e=>{e.stopPropagation();setMenu(!nav.classList.contains('open'))};
+$$('#navLinks a,.brand').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('click',e=>{if(!nav.contains(e.target))setMenu(false)});
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 
 /* CURSOR GLOW + AVATAR TILT */
 const glow=$('#glow');
@@ -431,7 +534,9 @@ addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top
 /* PARTICLES */
 const cv=$('#bg'),cx=cv.getContext('2d');let P=[],mouse={x:-999,y:-999};
 const cols=['#36bcf7','#ff4fa3','#ffd23f','#7c5cff','#3ee8a5'];
-function resize(){cv.width=innerWidth;cv.height=innerHeight;P=Array.from({length:Math.min(80,innerWidth/16)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+1,c:cols[Math.random()*5|0]}))}
+let lastW=0;
+function resize(){cv.width=innerWidth;cv.height=innerHeight;if(innerWidth===lastW&&P.length)return;lastW=innerWidth;
+  P=Array.from({length:Math.round(Math.min(80,innerWidth/(innerWidth<600?22:16)))},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+1,c:cols[Math.random()*5|0]}))}
 resize();addEventListener('resize',resize);addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
 (function draw(){cx.clearRect(0,0,cv.width,cv.height);
   P.forEach((p,i)=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cv.width)p.vx*=-1;if(p.y<0||p.y>cv.height)p.vy*=-1;
@@ -549,8 +654,10 @@ $('#form').onsubmit=e=>{e.preventDefault();const n=$('#fname').value,em=$('#fema
 /* CONFETTI + KONAMI */
 function confetti(){for(let i=0;i<80;i++){const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=cols[i%5];c.style.borderRadius=Math.random()<.5?'50%':'2px';document.body.append(c);
  c.animate([{transform:'translateY(0) rotate(0)'},{transform:`translateY(${innerHeight+40}px) translateX(${(Math.random()-.5)*200}px) rotate(${Math.random()*720}deg)`}],{duration:2000+Math.random()*1500,easing:'cubic-bezier(.2,.6,.4,1)'}).onfinish=()=>c.remove()}}
+function rainbow(){confetti();toast('🎉 ¡Modo arcoíris activado!');document.documentElement.style.setProperty('--grad','linear-gradient(90deg,#ff0000,#ff8a00,#ffe600,#14e81e,#00b3ff,#8a2be2,#ff00c8)')}
+let taps=0,tapT;$('#avatar').addEventListener('click',()=>{taps++;clearTimeout(tapT);tapT=setTimeout(()=>taps=0,1500);if(taps>=5){taps=0;rainbow()}});
 const K=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];let kp=0;
-addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;kp=e.key===K[kp]?kp+1:0;if(kp===K.length){kp=0;confetti();document.body.style.animation='none';toast('🎉 ¡Modo arcoíris activado!');document.documentElement.style.setProperty('--grad','linear-gradient(90deg,#ff0000,#ff8a00,#ffe600,#14e81e,#00b3ff,#8a2be2,#ff00c8)')}});
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;kp=e.key===K[kp]?kp+1:0;if(kp===K.length){kp=0;rainbow()}});
 </script>
 </body>
 </html>
