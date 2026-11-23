@@ -2,6 +2,8 @@
 
 Ingeniera de Software · **Backend & Full Stack** · Milagro, Ecuador
 
+> Información personal para tener constancia de experiencia práctica.
+
 Portafolio personal interactivo hecho con **HTML, CSS y JavaScript puro** (sin frameworks ni build).
 
 ## ✨ Características
